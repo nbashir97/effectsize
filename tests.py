@@ -51,7 +51,7 @@ for sample in multinomial:
 group = [0]*samplesize + [1]*samplesize
 
 ## Weights
-weights = numpy.random.RandomState(seed = 1234).normal(loc = 100, scale = 15, size = samplesize*2).tolist()
+weights = sample.normal(loc = 100, scale = 15, size = samplesize*2).tolist()
 
 ## Creating Pandas dataframe
 df = pandas.DataFrame(list(zip(gaussian, exponential, binomial, multinomial_int, group, weights)),
