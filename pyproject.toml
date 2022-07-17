@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "effectsize"
+version = "0.0.1"
+authors = [
+    { name = "Nasir Bashir", email = "nbashir562@gmail.com" },
+]
+description = "A Python package for computing effect sizes"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">= 3.7"
+dependencies = [
+    "pandas",
+    "numpy",
+    "scipy",
+    "statsmodels"
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/nbashir97/effectsize"
