@@ -2,6 +2,7 @@ import numpy
 import scipy
 import pandas
 from statsmodels.stats.weightstats import DescrStatsW
+# Note that in the function documentation the term standardized difference (SD) is preferred over effect size; both terms have the same meaning
 
 #%%
 
@@ -18,7 +19,7 @@ def list_filter(list1,
         list2 (list): Second list to be compared
     
     Returns:
-        filtered_list: List made up of the common elements of list1 and list2 
+        List containing the common elements of list1 and list2 
         
     """    
     
@@ -57,7 +58,7 @@ def compute_intervals(data,
         coverage (float): Value in range (0,1) specfiying coverage of confidence interval e.g. for 95% CI, intervals = 0.95
     
     Returns:
-        A list with the first element as the upper CI and second element as the lower CI 
+        List in the format: [upper CI, lower CI] 
         
     """
     
@@ -108,6 +109,21 @@ def compute_means(data,
                   group,
                   variable,
                   weights):
+
+    """
+    
+    Computes mean and variance for continuous variables, conditional on group
+       
+    Parameters:
+        data (dataframe): Pandas DataFrame containing observations (rows) and variables (columns)
+        group (str): Variable defining the two groups
+        variable (str): Variable to be compared across the two groups
+        weights (None or str): Variable defining weights for each observation (otherwise assumed to be equally weighted)
+    
+    Returns:
+        List in the format: [group 0 mean, group 1 mean, group 0 variance, group 1 variance]
+        
+    """
     
     data = data.dropna(axis = 0, subset = [group, variable])
     
@@ -167,14 +183,14 @@ def compute_continuous(data,
     Parameters:
         data (dataframe): Pandas DataFrame containing observations (rows) and variables (columns)
         group (str): Variable defining the two groups
-        variable (str): Variable to be compared across exposed and unexposed
+        variable (str): Variable to be compared across the two groups
         skewed (list): List of string items which are names of the continuous variables which have a skewed distribution (ranked SD computed)
         weights (None or str): Variable defining weights for each observation (otherwise assumed to be equally weighted)
         decimals (int): Number of decimal places which should be computed
         intervals (None or float): Whether CIs should be computed and with what coverage e.g. for 95% CI, intervals = 0.95
     
     Returns:
-        Returns the computed SD with or without confidence intervals
+        Computed SD or list containing SD and CI, if requested
         
     """
            
@@ -229,13 +245,13 @@ def compute_categorical(data,
     Parameters:
         data (dataframe): Pandas DataFrame containing observations (rows) and variables (columns)
         group (str): Variable defining the two groups
-        variable (str): Variable to be compared across exposed and unexposed
+        variable (str): Variable to be compared across the two groups
         weights (None or str): Variable defining weights for each observation (otherwise assumed to be equally weighted)
         decimals (int): Number of decimal places which should be computed
         intervals (None or float): Whether CIs should be computed and with what coverage e.g. for 95% CI, intervals = 0.95
     
     Returns:
-        Returns the computed SD with or without confidence intervals
+        Computed SD or list containing SD and CI, if requested
     
     """
     
