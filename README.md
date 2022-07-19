@@ -3,7 +3,7 @@
 [![PyPI version](https://badge.fury.io/py/effectsize.svg)][pypi]
 [![GitHub](https://img.shields.io/github/license/nbashir97/effectsize)][license]
 
-`effectsize` is the first comprehensive Python package for computing effect sizes (ESs), also known as standardized differences. The package implements the methodology outlined by [Yang and Dalton, 2012][yang2012] and it provides complex functionality, such as the ability to deal with skewed variables, multinomial categories, and weighted statistics.
+`effectsize` is a comprehensive Python package for computing effect sizes (ESs), also known as standardized differences. The package implements the methodology outlined by [Yang and Dalton, 2012][yang2012] and it provides complex functionality, such as the ability to deal with skewed variables, multinomial categories, and weighted statistics.
 
 ## Prerequisites
 
