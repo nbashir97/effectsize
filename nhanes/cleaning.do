@@ -28,7 +28,7 @@ generate BMI = bmxbmi
 generate cholesterol = lbxtc
 
 * Smoking status (0: non-smoker, 1: smoker)
-generate smoking = 0 if(smq020 == 2 | smq040 == 3 )
+generate smoking = 0 if(smq020 == 2 | smq040 == 3)
 replace smoking = 1 if(smq040 == 1 | smq040 == 2)
 
 keep age-smoking wtmec2yr
