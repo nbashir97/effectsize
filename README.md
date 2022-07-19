@@ -8,7 +8,7 @@
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
-* You have installed Python 3.6 or higher
+* You have installed Python 3.7 or higher
 * You have installed the following four Python modules: [`numpy`][numpy], [`pandas`][pandas], [`scipy`][scipy], [`statsmodels`][statsmodels]
 
 ## Installation
