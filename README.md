@@ -111,8 +111,8 @@ effectsize.compute(data = df,
 
 |      |   ES  |
 |:----:|:-----:|
-| var1 |  0.54 |
-| var2 |  0.16 |
+| var3 |  0.54 |
+| var4 |  0.16 |
 
 Finally, if we wish to compute ESs for all variables at once:
 
