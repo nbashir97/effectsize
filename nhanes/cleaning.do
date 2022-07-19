@@ -1,6 +1,6 @@
 * Cleaning raw NHANES data for testing effectsize in Python
 
-use "{Insert path to}\nhanes_raw.dta", clear
+use "{Insert path to}/nhanes_raw.dta", clear
 
 * Age
 generate age = ridageyr
@@ -37,4 +37,4 @@ foreach var of varlist age-smoking {
 	drop if missing(`var')
 }
 
-save "{Insert path to}\nhanes_cleaned.dta", replace
+save "{Insert path to}/nhanes_cleaned.dta", replace
