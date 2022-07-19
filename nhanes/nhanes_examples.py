@@ -48,8 +48,3 @@ effectsize.compute(data = nhanes,
                    categorical = ["sex", "ethnicity", "education"],
                    skewed = ["BMI"],
                    weights = "wtmec2yr")
-
-
-
-
-
