@@ -1,5 +1,6 @@
 import pandas
 from functions import list_filter, compute_continuous, compute_categorical
+# Note that in the function documentation the term standardized difference (SD) is preferred over effect size; both terms have the same meaning
 
 #%%
 
@@ -18,7 +19,7 @@ def compute(data,
     
     Parameters:
         data (dataframe): Pandas DataFrame containing observations (rows) and variables (columns)
-        exposure (str): Variable defining exposed and unexposed
+        exposure (str): Variable defining the two groups
         continuous (list): List of string items which are names of the continuous variables for which the SD should be computed
         categorical (list): List of string items which are names of the categorical variables for which the SD should be computed
         skewed (list): List of string items which are names of the continuous variables which have a skewed distribution (ranked SD computed)
@@ -27,7 +28,7 @@ def compute(data,
         intervals (None or float): Whether CIs should be computed and with what coverage e.g. for 95% CI, intervals = 0.95
     
     Returns:
-        Returns a Pandas DataFrame containing the computed SDs (plus CIs, if specified)
+        Pandas DataFrame containing the computed SDs (and CIs, if specified)
 
     """
       
