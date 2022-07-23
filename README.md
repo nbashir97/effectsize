@@ -1,25 +1,32 @@
 # effectsize: computing effect sizes in Python
 
-[![PyPI version](https://badge.fury.io/py/effectsize.svg)][pypi]
-[![GitHub](https://img.shields.io/github/license/nbashir97/effectsize)][license]
+[![PyPI](https://badge.fury.io/py/effectsize.svg)][pypi]
+[![Conda](https://anaconda.org/conda-forge/effectsize/badges/version.svg)][conda]
+[![License](https://img.shields.io/github/license/nbashir97/effectsize)][license]
 
-`effectsize` is the first comprehensive Python package for computing effect sizes (ESs), also known as standardized differences, and it implements the methodology outlined by [Yang and Dalton, 2012][yang2012] for SAS. The package provides complex functionality, such as the ability to deal with skewed variables, multinomial categories, and weighted statistics.
+`effectsize` is a comprehensive Python package for computing effect sizes (ESs), also known as standardized differences. The package implements the methodology outlined by [Yang and Dalton (2012)][yang2012] and it provides complex functionality, such as the ability to deal with skewed variables, multinomial categories, and weighted statistics.
 
 ## Prerequisites
 
-Before you begin, ensure you have met the following requirements:
-* You have installed Python 3.7 or higher
-* You have installed the following four Python modules: [`numpy`][numpy], [`pandas`][pandas], [`scipy`][scipy], [`statsmodels`][statsmodels]
+Before you begin, ensure you have installed Python 3.7 or higher
+
+`effectsize` has four dependencies: [`numpy`][numpy], [`pandas`][pandas], [`scipy`][scipy], [`statsmodels`][statsmodels]
 
 ## Installation
 
-Source code for `effectsize` is hosted on its [GitHub repository][repo]
+Binary installers for the latest released version are available at the [Python Package Index (PyPI)][pypi]:
 
-Binary installers for the latest released version are available at the Python Package Index (PyPI):
-
-```
+```sh
 pip install effectsize
 ```
+
+As well as through the conda-forge channel on [Conda][conda]:
+
+```sh
+conda install -c conda-forge effectsize
+```
+
+Source code for `effectsize` is hosted on its [GitHub repository][repo]
 
 ## Usage
 
@@ -29,7 +36,7 @@ To use `effectsize`, it must first be imported as a Python module:
 import effectsize
 ```
 
-From here, all of `effectsize`'s functionality is accessible through a single function named `compute`, which is accessed via. `effectsize.compute()`. This function takes up to 8 arguments which are outlined below, along with their default values:
+From here, all of `effectsize`'s functionality is accessible through a single function named `compute`, which is called via. `effectsize.compute()`. This function takes up to 8 arguments, which are outlined below along with their default values:
 
 ```python
 effectsize.compute(data,
@@ -42,7 +49,7 @@ effectsize.compute(data,
                    intervals = None)
 ```
 
-Given a `Pandas DataFrame` and a variable specifying 2 groups, `effectsize.compute()` will return another `Pandas DataFrame` containing ESs for all variables that are requested by the user. Detailed description for each argument of `effectsize.compute()` are presented below:
+Given a `Pandas DataFrame` and a variable specifying 2 groups, `effectsize.compute()` will return another `Pandas DataFrame` containing ESs for all variables that were requested by the user. Detailed description for each argument of `effectsize.compute()` is presented below:
 
 * **data** (`Pandas DataFrame`): Each row should be an observation and each column should be a variable. In other words, all variables for which the user would like to compute an ES must be a column within the DataFrame.
 * **group** (`str`): This should be the variable defining the two groups, specified as a string. Ideally, these two groups should be coded as 0 (control) and 1 (treatment), but `effectsize` will work regardless of the coding system used, provided it specifies two groups. Note that if the coding is switched then, the sign of the ES for continuous variables will be reversed, but the magnitude will stay the same. This is typically not an issue as it is the magnitude of the ES which is the most important consideration, and the direction can be inferred from summary statistics, but this may still be worth taking into account if the sign happens to be of particular importance.
@@ -53,7 +60,7 @@ Given a `Pandas DataFrame` and a variable specifying 2 groups, `effectsize.compu
 * **decimals** (`int`): This should be an integer which specifies the number of decimals to which the ESs should be computed, the default value is 2.
 * **intervals** (`None` or `float`): This should be a value between 0 and 1 specifying the level of confidence interval (CI) which the user would like e.g., to compute a 95\% CI, this should be specified as `intervals = 0.95`. Note that CIs are rarely required for ESs, and if CIs do not need to be computed then **intervals** should be passed the value `None`, which is also the default value passed to the argument.
 
-`effectsize` excludes all observations for which data is missing on **group** (i.e., it is not clear to which of the 2 groups the observation belongs) or if data is missing on the variables for which the user would like ESs computed (i.e., those in **continuous** and/or **categorical**). Therefore, it is advised that users deal with missing data in the most appropriate manner for their analyses prior to computing ESs.
+`effectsize` excludes all observations for which data is missing on **group** (i.e., it is not clear to which of the 2 groups the observation belongs), or if data is missing on the variable for which the user would like ESs computed (i.e., those in **continuous** and/or **categorical**). Therefore, it is advised that users deal with missing data in the most appropriate manner for their analyses prior to computing ESs.
 
 The order in which the ESs appear in the output of `effectsize.compute()` is the same order in which the variables appear in the `DataFrame` passed to `data`. This is to ensure consistency between the output of `effectsize` and the user's original `DataFrame`. It does not matter in which order users specify the variable names inside of **continuous** and **categorical**, the results will always be output so that they correspond to the same order as the original `DataFrame`.
 
@@ -111,8 +118,8 @@ effectsize.compute(data = df,
 
 |      |   ES  |
 |:----:|:-----:|
-| var1 |  0.54 |
-| var2 |  0.16 |
+| var3 |  0.54 |
+| var4 |  0.16 |
 
 Finally, if we wish to compute ESs for all variables at once:
 
@@ -293,7 +300,7 @@ effectsize.compute(data = nhanes,
 
 The level of precision and CIs can be modified within the `decimals` and `intervals` arguments, as demonstrated in earlier simulation examples.
 
-Finally, to demonstrate the effect of how the group coding, we switched how smokers and non-smokers were coded. In the examples above, smokers were coded as 1 and non-smokers as 0. We now re-run the final example from above, but having swithced non-smokers to 1 and smokers to 0:
+Finally, to demonstrate the effect of how the group coding, we switched how smokers and non-smokers were coded. In the examples above, smokers were coded as 1 and non-smokers as 0. We now re-run the final example from above, but having switched smokers to 0 and non-smokers to 1:
 
 ```python
 effectsize.compute(data = nhanes, 
@@ -317,7 +324,7 @@ We see that the magnitude of the ESs has remained unchanged, but the direction f
 
 ## Contributing
 
-Users are actively encouraged to test `effectsize`, leave feedback, and make contributions. In particular, contributions related to improving computational efficiency, adding features which are likely to be widely used, and developing the mathematical theory are welcomed. Users can develop the software as they wish, [create pull requests][pulling] on GitHub, or get in touch regarding any relevant developments in statistical theory.
+Users are actively encouraged to test and implement `effectsize` in their projects, as well as leave feedback and make contributions to the packages. In particular, we welcome contributions relating to improving computational efficiency, adding features which are likely to be widely used, and developing the unerlying mathematical theory. Users can [fork the software][forking] and [create pull requests][pulling] on GitHub, or get in touch regarding any relevant developments in statistical theory.
 
 ## Contact
 
@@ -325,9 +332,10 @@ If you wish to contact me you can reach me at nbashir562@gmail.com
 
 ## License
 
-[MIT License][mit]
+[MIT License][license]
 
 [pypi]: https://pypi.org/project/effectsize/
+[conda]: https://anaconda.org/conda-forge/effectsize
 [license]: https://github.com/nbashir97/effectsize/blob/main/LICENSE.md
 [yang2012]: https://www.semanticscholar.org/paper/A-unified-approach-to-measuring-the-effect-size-two-Yang-Dalton/6cf4bd36ca4c90006a5d6563f646a391c255581b
 [numpy]: https://numpy.org/
@@ -337,4 +345,4 @@ If you wish to contact me you can reach me at nbashir562@gmail.com
 [repo]: https://github.com/nbashir97/effectsize
 [nhanes]: https://www.cdc.gov/nchs/nhanes/index.htm
 [pulling]: https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request
-[mit]: https://opensource.org/licenses/MIT
+[forking]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
