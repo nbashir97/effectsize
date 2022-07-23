@@ -4,13 +4,13 @@
 [![Conda](https://anaconda.org/conda-forge/effectsize/badges/version.svg)][conda]
 [![License](https://img.shields.io/github/license/nbashir97/effectsize)][license]
 
-`effectsize` is a comprehensive Python package for computing effect sizes (ESs), also known as standardized differences. The package implements the methodology outlined by [Yang and Dalton, 2012][yang2012] and it provides complex functionality, such as the ability to deal with skewed variables, multinomial categories, and weighted statistics.
+`effectsize` is a comprehensive Python package for computing effect sizes (ESs), also known as standardized differences. The package implements the methodology outlined by [Yang and Dalton (2012)][yang2012] and it provides complex functionality, such as the ability to deal with skewed variables, multinomial categories, and weighted statistics.
 
 ## Prerequisites
 
-Before you begin, ensure you have met the following requirements:
-* You have installed Python 3.7 or higher
-* You have installed the following four Python modules: [`numpy`][numpy], [`pandas`][pandas], [`scipy`][scipy], [`statsmodels`][statsmodels]
+Before you begin, ensure you have installed Python 3.7 or higher
+
+`effectsize` has four dependencies: [`numpy`][numpy], [`pandas`][pandas], [`scipy`][scipy], [`statsmodels`][statsmodels]
 
 ## Installation
 
@@ -20,7 +20,7 @@ Binary installers for the latest released version are available at the [Python P
 pip install effectsize
 ```
 
-As well as through conda-forge channels on [Conda][conda]:
+As well as through the conda-forge channel on [Conda][conda]:
 
 ```sh
 conda install -c conda-forge effectsize
