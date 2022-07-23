@@ -1,6 +1,7 @@
 # effectsize: computing effect sizes in Python
 
 [![PyPI](https://badge.fury.io/py/effectsize.svg)][pypi]
+[![Conda](https://anaconda.org/conda-forge/effectsize/badges/version.svg)][conda]
 [![License](https://img.shields.io/github/license/nbashir97/effectsize)][license]
 
 `effectsize` is a comprehensive Python package for computing effect sizes (ESs), also known as standardized differences. The package implements the methodology outlined by [Yang and Dalton, 2012][yang2012] and it provides complex functionality, such as the ability to deal with skewed variables, multinomial categories, and weighted statistics.
@@ -13,13 +14,19 @@ Before you begin, ensure you have met the following requirements:
 
 ## Installation
 
-Source code for `effectsize` is hosted on its [GitHub repository][repo]
+Binary installers for the latest released version are available at the [Python Package Index (PyPI)][pypi]:
 
-Binary installers for the latest released version are available at the Python Package Index (PyPI):
-
-```
+```sh
 pip install effectsize
 ```
+
+As well as through conda-forge channels on [Conda][conda]:
+
+```sh
+conda install -c conda-forge effectsize
+```
+
+Source code for `effectsize` is hosted on its [GitHub repository][repo]
 
 ## Usage
 
@@ -328,6 +335,7 @@ If you wish to contact me you can reach me at nbashir562@gmail.com
 [MIT License][license]
 
 [pypi]: https://pypi.org/project/effectsize/
+[conda]: https://anaconda.org/conda-forge/effectsize
 [license]: https://github.com/nbashir97/effectsize/blob/main/LICENSE.md
 [yang2012]: https://www.semanticscholar.org/paper/A-unified-approach-to-measuring-the-effect-size-two-Yang-Dalton/6cf4bd36ca4c90006a5d6563f646a391c255581b
 [numpy]: https://numpy.org/
