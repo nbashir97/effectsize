@@ -1,4 +1,4 @@
-This folder contains the files used to carry out tests:
+This directory contains the files used to carry out tests:
 
 1. **functions.py:** defining the functions required to execute `effectsize.compute()` (this is a copy of the script in the **src** directory)
 2. **main_tests.py:** script to carry out tests on `effectsize.compute()`
