@@ -1,7 +1,7 @@
 # effectsize: computing effect sizes in Python
 
-[![PyPI version](https://badge.fury.io/py/effectsize.svg)][pypi]
-[![GitHub](https://img.shields.io/github/license/nbashir97/effectsize)][license]
+[![PyPI](https://badge.fury.io/py/effectsize.svg)][pypi]
+[![License](https://img.shields.io/github/license/nbashir97/effectsize)][license]
 
 `effectsize` is a comprehensive Python package for computing effect sizes (ESs), also known as standardized differences. The package implements the methodology outlined by [Yang and Dalton, 2012][yang2012] and it provides complex functionality, such as the ability to deal with skewed variables, multinomial categories, and weighted statistics.
 
@@ -325,7 +325,7 @@ If you wish to contact me you can reach me at nbashir562@gmail.com
 
 ## License
 
-[MIT License][mit]
+[MIT License][license]
 
 [pypi]: https://pypi.org/project/effectsize/
 [license]: https://github.com/nbashir97/effectsize/blob/main/LICENSE.md
@@ -338,4 +338,3 @@ If you wish to contact me you can reach me at nbashir562@gmail.com
 [nhanes]: https://www.cdc.gov/nchs/nhanes/index.htm
 [pulling]: https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request
 [forking]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
-[mit]: https://opensource.org/licenses/MIT
