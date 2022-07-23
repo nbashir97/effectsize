@@ -1,4 +1,4 @@
-This folder contains the files used to create the use case examples on NHANES data:
+This directory contains the files used to create the use case examples on NHANES data:
 
 1. **nhanes_examples.py:** script for running the analyses in order to create Table 2 and compute effect sizes
 2. **nhanes_cleaned.dta:** the cleaned NHANES dataset used in nhanes_examples.py
