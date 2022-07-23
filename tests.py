@@ -91,7 +91,7 @@ effectsize.compute(data = df,
                    group = "group",
                    categorical = ["var3", "var4"])
 
-## ALl variables
+## All variables
 effectsize.compute(data = df,
                    group = "group",
                    continuous = ["var1", "var2"],
