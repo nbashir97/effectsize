@@ -293,7 +293,7 @@ effectsize.compute(data = nhanes,
 
 The level of precision and CIs can be modified within the `decimals` and `intervals` arguments, as demonstrated in earlier simulation examples.
 
-Finally, to demonstrate the effect of how the group coding, we switched how smokers and non-smokers were coded. In the examples above, smokers were coded as 1 and non-smokers as 0. We now re-run the final example from above, but having switched non-smokers to 1 and smokers to 0:
+Finally, to demonstrate the effect of how the group coding, we switched how smokers and non-smokers were coded. In the examples above, smokers were coded as 1 and non-smokers as 0. We now re-run the final example from above, but having switched smokers to 0 and non-smokers to 1:
 
 ```python
 effectsize.compute(data = nhanes, 
@@ -317,7 +317,7 @@ We see that the magnitude of the ESs has remained unchanged, but the direction f
 
 ## Contributing
 
-Users are actively encouraged to test `effectsize`, leave feedback, and make contributions. In particular, contributions related to improving computational efficiency, adding features which are likely to be widely used, and developing the mathematical theory are welcomed. Users can develop the software as they wish, [create pull requests][pulling] on GitHub, or get in touch regarding any relevant developments in statistical theory.
+Users are actively encouraged to test and implement `effectsize` in their projects, as well as leave feedback and make contributions to the packages. In particular, we welcome contributions relating to improving computational efficiency, adding features which are likely to be widely used, and developing the unerlying mathematical theory. Users can [fork the software][forking] and [create pull requests][pulling] on GitHub, or get in touch regarding any relevant developments in statistical theory.
 
 ## Contact
 
@@ -337,4 +337,5 @@ If you wish to contact me you can reach me at nbashir562@gmail.com
 [repo]: https://github.com/nbashir97/effectsize
 [nhanes]: https://www.cdc.gov/nchs/nhanes/index.htm
 [pulling]: https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request
+[forking]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [mit]: https://opensource.org/licenses/MIT
