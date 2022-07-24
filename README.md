@@ -62,7 +62,7 @@ Given a `Pandas DataFrame` and a variable specifying 2 groups, `effectsize.compu
 
 `effectsize` excludes all observations for which data is missing on **group** (i.e., it is not clear to which of the 2 groups the observation belongs), or if data is missing on the variable for which the user would like ESs computed (i.e., those in **continuous** and/or **categorical**). Therefore, it is advised that users deal with missing data in the most appropriate manner for their analyses prior to computing ESs.
 
-The order in which the ESs appear in the output of `effectsize.compute()` is the same order in which the variables appear in the `DataFrame` passed to `data`. This is to ensure consistency between the output of `effectsize` and the user's original `DataFrame`. It does not matter in which order users specify the variable names inside of **continuous** and **categorical**, the results will always be output so that they correspond to the same order as the original `DataFrame`.
+The order in which the ESs appear in the output of `effectsize.compute()` is the same order in which the variables appear in the `DataFrame` passed to **data**. This is to ensure consistency between the output of `effectsize` and the user's original `DataFrame`. It does not matter in which order users specify the variable names inside of **continuous** and **categorical**, the results will always be output so that they correspond to the same order as the original `DataFrame`.
 
 ### Simulation examples
 
