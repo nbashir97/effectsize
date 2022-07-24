@@ -79,7 +79,7 @@ To demonstrate examples of how to use `effectsize`, we simulated 2 groups, each 
 |                  | Level 1 |         39 (39%)       |         27 (27%)       |
 |                  | Level 2 |         33 (33%)       |         28 (28%)       |
 
-We will assume that the name of the `Pandas DataFrame` in which these data are stored is named `df`, and the name of the variable specifying the group to which each observation belongs is named `group`.
+We will assume that the `Pandas DataFrame` in which these data are stored is named `df`, and the name of the variable specifying the group to which each observation belongs is named `group`.
 
 To compute ESs for the continuous variables only:
 
@@ -239,7 +239,7 @@ Age, BMI, and blood cholesterol were measured as continuous variables, whilst se
 |     BMI     |                      |         30.0 (7.3)        |      29.2 (7.8)     |
 | Cholesterol |                      |        188.0 (40.8)       |     189.6 (43.5)    |
 
-We will assume that the name of the `Pandas DataFrame` in which these data are stored is `nhanes`, and the name of the variable specifying whether indivduals are smokers or non-smokers is named `smoking`.
+We will assume that the `Pandas DataFrame` in which these data are stored is named `nhanes`, and the name of the variable specifying whether indivduals are smokers or non-smokers is named `smoking`.
 
 To compute ESs for all variables:
 
