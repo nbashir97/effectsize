@@ -79,7 +79,7 @@ To demonstrate examples of how to use `effectsize`, we simulated 2 groups, each 
 |                  | Level 1 |         39 (39%)       |         27 (27%)       |
 |                  | Level 2 |         33 (33%)       |         28 (28%)       |
 
-We will assume that the name of the `Pandas DataFrame` in which these data are stored is `df`, and the name of the variable specifying the group to which each observation belongs is named `group`.
+We will assume that the name of the `Pandas DataFrame` in which these data are stored is named `df`, and the name of the variable specifying the group to which each observation belongs is named `group`.
 
 To compute ESs for the continuous variables only:
 
