@@ -324,7 +324,7 @@ We see that the magnitude of the ESs has remained unchanged, but the direction f
 
 ## Contributing
 
-Users are actively encouraged to test and implement `effectsize` in their projects, as well as leave feedback and make contributions to the package. In particular, we welcome contributions relating to improving computational efficiency, adding features which are likely to be widely used, and developing the unerlying mathematical theory. Users can [fork the software][forking] and [create pull requests][pulling] on GitHub, or get in touch regarding any relevant developments in statistical theory.
+Users are actively encouraged to test and implement `effectsize` in their projects, as well as leave feedback and make contributions to the package. In particular, we welcome contributions relating to improving computational efficiency, adding features which are likely to be widely used, and developing the underlying mathematical theory. Users can [fork the software][forking] and [create pull requests][pulling] on GitHub, or get in touch regarding any relevant developments in statistical theory.
 
 ## Contact
 
