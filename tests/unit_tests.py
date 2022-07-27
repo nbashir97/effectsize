@@ -17,7 +17,7 @@ list_c = ["banana", "cat", "frog", "apple"]
 list_filter(list1 = list_a, list2 = list_b)
 
 ## Test 2
-list_filter(list1 = list_a, list2 = list_b)
+list_filter(list1 = list_a, list2 = list_c)
 
 # compute_intervals()
 
