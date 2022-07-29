@@ -10,6 +10,8 @@ nhanes = pandas.read_stata("{Insert path to}/nhanes_cleaned.dta")
 
 # Summarizing
 
+print(nhanes["smoking"].value_counts(sort = False))
+
 for variable in ["age", "BMI", "cholesterol"]:
     print(nhanes.groupby("smoking")[variable].mean().round(decimals = 2))
     print(nhanes.groupby("smoking")[variable].std().round(decimals = 1))
