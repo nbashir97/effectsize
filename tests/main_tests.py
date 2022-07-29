@@ -5,6 +5,16 @@ import effectsize
 simulation = open("{Insert path to}/simulating_data.py").read()
 exec(simulation)
 
+#%% Summary statistics
+
+for variable in ["var1", "var2"]:
+    print(df.groupby("group")[variable].mean().round(2))
+    print(df.groupby("group")[variable].std().round(1))
+
+for variable in ["var3", "var4"]:
+    print(df.groupby("group")[variable].value_counts(sort = False))
+    print(df.groupby("group")[variable].value_counts(sort = False, normalize = True))
+
 #%%
 
 # Computing SDs
