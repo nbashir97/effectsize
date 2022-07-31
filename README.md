@@ -71,13 +71,13 @@ To demonstrate examples of how to use `effectsize`, we simulated 2 groups, each 
 **Table 1.** Summary of simulated data. Continuous variables are presented as mean (standard deviation) and categorical variables are presented as _n_ (%).
 |     Variable     |         |   Group 1 (_n_ = 100)  |   Group 2 (_n_ = 100)  |
 |:----------------:|:-------:|:----------------------:|:----------------------:|
-|       var1       |         |        1.02 (0.7)      |        1.23 (0.9)      |
-|       var2       |         |        0.33 (0.3)      |        0.23 (0.2)      |
-|       var3       | Level 0 |         82 (82%)       |         58 (58%)       |
-|                  | Level 1 |         18 (18%)       |         42 (42%)       |
-|       var4       | Level 0 |         29 (29%)       |         35 (35%)       |
-|                  | Level 1 |         39 (39%)       |         27 (27%)       |
-|                  | Level 2 |         33 (33%)       |         28 (28%)       |
+|       var1       |         |        1.02 (0.7)      |        1.15 (0.9)      |
+|       var2       |         |        0.37 (0.4)      |        0.30 (0.3)      |
+|       var3       | Level 0 |         81 (81%)       |         65 (65%)       |
+|                  | Level 1 |         19 (19%)       |         35 (35%)       |
+|       var4       | Level 0 |         24 (24%)       |         32 (32%)       |
+|                  | Level 1 |         46 (46%)       |         38 (38%)       |
+|                  | Level 2 |         30 (30%)       |         30 (30%)       |
 
 We will assume that the `Pandas DataFrame` in which these data are stored is named `df`, and the name of the variable specifying the group to which each observation belongs is named `group`.
 
@@ -91,8 +91,8 @@ effectsize.compute(data = df,
 
 |      |   ES  |
 |:----:|:-----:|
-| var1 |  0.26 |
-| var2 | -0.31 |
+| var1 |  0.16 |
+| var2 | -0.20 |
 
 However we know `var2` is skewed, so we may want to account for this:
 
@@ -105,8 +105,8 @@ effectsize.compute(data = df,
 
 |      |   ES  |
 |:----:|:-----:|
-| var1 |  0.26 |
-| var2 | -0.29 |
+| var1 |  0.16 |
+| var2 | -0.11 |
 
 We see a small change in the ES for `var2` after accounting for the fact that it is skewed. We can also compute ESs for the categorical variables only:
 
@@ -118,8 +118,8 @@ effectsize.compute(data = df,
 
 |      |   ES  |
 |:----:|:-----:|
-| var3 |  0.54 |
-| var4 |  0.16 |
+| var3 |  0.37 |
+| var4 |  0.20 |
 
 Finally, if we wish to compute ESs for all variables at once:
 
@@ -133,10 +133,10 @@ effectsize.compute(data = df,
 
 |      |   ES  |
 |:----:|:-----:|
-| var1 |  0.26 |
-| var2 | -0.29 |
-| var3 |  0.54 |
-| var4 |  0.16 |
+| var1 |  0.16 |
+| var2 | -0.11 |
+| var3 |  0.37 |
+| var4 |  0.20 |
 
 Obtraining extra precision is also straightforward:
 
@@ -151,10 +151,10 @@ effectsize.compute(data = df,
 
 |      |    ES   |
 |:----:|:-------:|
-| var1 |  0.2566 |
-| var2 | -0.2934 |
-| var3 |  0.5427 |
-| var4 |  0.1580 |
+| var1 |  0.1632 |
+| var2 | -0.1150 |
+| var3 |  0.3664 |
+| var4 |  0.1961 |
 
 Conifdence intervals are easily computed, in this case 95% CIs:
 
@@ -167,12 +167,12 @@ effectsize.compute(data = df,
                    intervals = 0.95)
 ```
 
-|      |   ES  |    95.0% CI    |
-|:----:|:-----:|:--------------:|
-| var1 |  0.26 |  [-0.02, 0.54] |
-| var2 | -0.29 | [-0.57, -0.01] |
-| var3 |  0.54 |  [0.26, 0.82]  |
-| var4 |  0.16 |  [-0.12, 0.44] |
+|      |   ES  |     95.0% CI    |
+|:----:|:-----:|:---------------:|
+| var1 |  0.16 |  [-0.12, 0.44]  |
+| var2 | -0.11 |  [-0.39, 0.17]  |
+| var3 |  0.37 |   [0.09, 0.65]  |
+| var4 |  0.20 |  [-0.08, 0.48]  |
 
 Similarly, for 99% CIs:
 
@@ -185,12 +185,12 @@ effectsize.compute(data = df,
                    intervals = 0.99)
 ```
 
-|      |   ES  |    99.0% CI   |
-|:----:|:-----:|:-------------:|
-| var1 |  0.26 | [-0.11, 0.63] |
-| var2 | -0.29 | [-0.66, 0.08] |
-| var3 |  0.54 |  [0.17, 0.91] |
-| var4 |  0.16 | [-0.20, 0.52] |
+|      |   ES  |     95.0% CI    |
+|:----:|:-----:|:---------------:|
+| var1 |  0.16 |  [-0.20, 0.52]  |
+| var2 | -0.11 |  [-0.47, 0.25]  |
+| var3 |  0.37 |   [0.00, 0.74]  |
+| var4 |  0.20 |  [-0.17, 0.57]  |
 
 We then create simulated weights for the observations by taking 200 samples from a Normal distribution with mean = 100 and standard deviation = 15. The variable containing the weights is named `wgt`, and we can compute a weighted ES by specifying this in the function call:
 
@@ -205,10 +205,10 @@ effectsize.compute(data = df,
 
 |      |   ES  |
 |:----:|:-----:|
-| var1 |  0.15 |
-| var2 | -0.29 |
-| var3 |  0.53 |
-| var4 |  0.15 |
+| var1 |  0.20 |
+| var2 | -0.14 |
+| var3 |  0.40 |
+| var4 |  0.19 |
 
 ### Empirical examples
 
