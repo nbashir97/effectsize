@@ -2,7 +2,7 @@
 
 [![PyPI](https://badge.fury.io/py/effectsize.svg)][pypi]
 [![Conda](https://anaconda.org/conda-forge/effectsize/badges/version.svg)][conda]
-[![License](https://img.shields.io/github/license/nbashir97/effectsize)][license]
+[![License](https://img.shields.io/badge/license-MIT-orange)][license]
 
 `effectsize` is a comprehensive Python package for computing effect sizes (ESs), also known as standardized differences. The package implements the methodology outlined by [Yang and Dalton (2012)][yang2012] and it provides complex functionality, such as the ability to deal with skewed variables, multinomial categories, and weighted statistics.
 
@@ -49,20 +49,20 @@ effectsize.compute(data,
                    intervals = None)
 ```
 
-Given a `Pandas DataFrame` and a variable specifying 2 groups, `effectsize.compute()` will return another `Pandas DataFrame` containing ESs for all variables that were requested by the user. Detailed description for each argument of `effectsize.compute()` is presented below:
+Given a `Pandas DataFrame` and a variable specifying 2 groups, `effectsize.compute()` will return another `Pandas DataFrame` containing ESs for all variables that are requested by the user. Detailed description for each argument of `effectsize.compute()` is presented below:
 
 * **data** (`Pandas DataFrame`): Each row should be an observation and each column should be a variable. In other words, all variables for which the user would like to compute an ES must be a column within the DataFrame.
-* **group** (`str`): This should be the variable defining the two groups, specified as a string. Ideally, these two groups should be coded as 0 (control) and 1 (treatment), but `effectsize` will work regardless of the coding system used, provided it specifies two groups. Note that if the coding is switched then, the sign of the ES for continuous variables will be reversed, but the magnitude will stay the same. This is typically not an issue as it is the magnitude of the ES which is the most important consideration, and the direction can be inferred from summary statistics, but this may still be worth taking into account if the sign happens to be of particular importance.
+* **group** (`str`): This should be the variable defining the two groups, specified as a string. Ideally, these two groups should be coded as 0 (control) and 1 (treatment), but `effectsize` will work regardless of the coding system used, provided it specifies two groups. Note that if the coding is switched then, the sign of the ES for continuous variables will be reversed, but the magnitude will stay the same. This is typically not an issue as the direction can be inferred from summary statistics.
 * **continuous** (`list`): This should contain the names of all of the continuous variables for which the user would like an ES computed. This must be specified as a list containing the variable names as strings e.g., `continuous = ["age", "salary", "bmi"]` would be syntactically correct but `continuous = [age, salary, bmi]` would not. If there are no continuous variables for which an ES needs to be computed, then **continuous** should be passed an empty list, which is also the default object passed to the argument.
 * **categorical** (`list`): This should contain the names of all of the categorical variables for which the user would like an ES computed. In the exact same way as the **continuous** argument, this must be passed a list containing the variable names as strings. If there are no categorical variables for which an ES needs to be computed, then **categorical** should be passed an empty list, which is also the default object passed to the argument.
-* **skewed** (`list`): This should contain the names of all of the continuous variables which have a skewed distribution, for which the user would like an ES computed. Note that the skewed variables must be specified in both the **continuous** argument and the **skewed** argument. For example, if age follows a skewed distribution, then this should be specified as `effectsize.compute(continuous = ["age", "salary", "bmi"], skewed = ["age"])`. If this were to be specified as `effectsize.compute(skewed = ["age"])`, then the age variable will simply be ignored and no ES returned. In the exact same way as the **continuous** argument, this must be passed a list containing the variable names as strings. If there are no skewed variables for which an ES needs to be computed, then **skewed** should be passed an empty list, which is also the default object passed to the argument.
+* **skewed** (`list`): This should contain the names of all of the continuous variables which have a skewed distribution, for which the user would like an ES computed. Note that the skewed variables must be specified in both the **continuous** argument and the **skewed** argument. For example, if age follows a skewed distribution, then this should be specified as `effectsize.compute(..., continuous = ["age", "salary", "bmi"], skewed = ["age"])`. If this were to be specified as `effectsize.compute(..., skewed = ["age"])`, then the age variable will simply be ignored and no ES returned. In the exact same way as the **continuous** argument, this must be passed a list containing the variable names as strings. If there are no skewed variables for which an ES needs to be computed, then **skewed** should be passed an empty list, which is also the default object passed to the argument.
 * **weights** (`None` or `str`): This should be the variable defining weights, specified as a string (examples of weights include sampling weights or propensity scores). Note that the sum of all of the weights must be >= 1, else the computed ES will not be correct. If there are no weights, then **weights** should be passed the value `None`, which is also the default value passed to the argument.
 * **decimals** (`int`): This should be an integer which specifies the number of decimals to which the ESs should be computed, the default value is 2.
-* **intervals** (`None` or `float`): This should be a value between 0 and 1 specifying the level of confidence interval (CI) which the user would like e.g., to compute a 95\% CI, this should be specified as `intervals = 0.95`. Note that CIs are rarely required for ESs, and if CIs do not need to be computed then **intervals** should be passed the value `None`, which is also the default value passed to the argument.
+* **intervals** (`None` or `float`): This should be a value between 0 and 1 specifying the level of confidence interval (CI) which the user would like e.g., to compute a 95\% CI, this should be specified as `intervals = 0.95`. Note if CIs do not need to be computed then **intervals** should be passed the value `None`, which is also the default value passed to the argument.
 
 `effectsize` excludes all observations for which data is missing on **group** (i.e., it is not clear to which of the 2 groups the observation belongs), or if data is missing on the variable for which the user would like ESs computed (i.e., those in **continuous** and/or **categorical**). Therefore, it is advised that users deal with missing data in the most appropriate manner for their analyses prior to computing ESs.
 
-The order in which the ESs appear in the output of `effectsize.compute()` is the same order in which the variables appear in the `DataFrame` passed to `data`. This is to ensure consistency between the output of `effectsize` and the user's original `DataFrame`. It does not matter in which order users specify the variable names inside of **continuous** and **categorical**, the results will always be output so that they correspond to the same order as the original `DataFrame`.
+The order in which the ESs appear in the output of `effectsize.compute()` is the same order in which the variables appear in the `DataFrame` passed to **data**. This is to ensure consistency between the output of `effectsize` and the user's original `DataFrame`. It does not matter in which order users specify the variable names inside of **continuous** and **categorical**, the results will always be output so that they correspond to the same order as the original `DataFrame`.
 
 ### Simulation examples
 
@@ -71,15 +71,15 @@ To demonstrate examples of how to use `effectsize`, we simulated 2 groups, each 
 **Table 1.** Summary of simulated data. Continuous variables are presented as mean (standard deviation) and categorical variables are presented as _n_ (%).
 |     Variable     |         |   Group 1 (_n_ = 100)  |   Group 2 (_n_ = 100)  |
 |:----------------:|:-------:|:----------------------:|:----------------------:|
-|       var1       |         |        1.02 (0.7)      |        1.23 (0.9)      |
-|       var2       |         |        0.33 (0.3)      |        0.23 (0.2)      |
-|       var3       | Level 0 |         82 (82%)       |         58 (58%)       |
-|                  | Level 1 |         18 (18%)       |         42 (42%)       |
-|       var4       | Level 0 |         29 (29%)       |         35 (35%)       |
-|                  | Level 1 |         39 (39%)       |         27 (27%)       |
-|                  | Level 2 |         33 (33%)       |         28 (28%)       |
+|       var1       |         |        1.02 (0.7)      |        1.15 (0.9)      |
+|       var2       |         |        0.37 (0.4)      |        0.30 (0.3)      |
+|       var3       | Level 0 |         81 (81%)       |         65 (65%)       |
+|                  | Level 1 |         19 (19%)       |         35 (35%)       |
+|       var4       | Level 0 |         24 (24%)       |         32 (32%)       |
+|                  | Level 1 |         46 (46%)       |         38 (38%)       |
+|                  | Level 2 |         30 (30%)       |         30 (30%)       |
 
-We will assume that the name of the `Pandas DataFrame` in which these data are stored is `df`, and the name of the variable specifying the group to which each observation belongs is named `group`.
+We will assume that the `Pandas DataFrame` in which these data are stored is named `df`, and the name of the variable specifying the group to which each observation belongs is named `group`.
 
 To compute ESs for the continuous variables only:
 
@@ -91,8 +91,8 @@ effectsize.compute(data = df,
 
 |      |   ES  |
 |:----:|:-----:|
-| var1 |  0.26 |
-| var2 | -0.31 |
+| var1 |  0.16 |
+| var2 | -0.20 |
 
 However we know `var2` is skewed, so we may want to account for this:
 
@@ -105,8 +105,8 @@ effectsize.compute(data = df,
 
 |      |   ES  |
 |:----:|:-----:|
-| var1 |  0.26 |
-| var2 | -0.29 |
+| var1 |  0.16 |
+| var2 | -0.11 |
 
 We see a small change in the ES for `var2` after accounting for the fact that it is skewed. We can also compute ESs for the categorical variables only:
 
@@ -118,8 +118,8 @@ effectsize.compute(data = df,
 
 |      |   ES  |
 |:----:|:-----:|
-| var3 |  0.54 |
-| var4 |  0.16 |
+| var3 |  0.37 |
+| var4 |  0.20 |
 
 Finally, if we wish to compute ESs for all variables at once:
 
@@ -133,10 +133,10 @@ effectsize.compute(data = df,
 
 |      |   ES  |
 |:----:|:-----:|
-| var1 |  0.26 |
-| var2 | -0.29 |
-| var3 |  0.54 |
-| var4 |  0.16 |
+| var1 |  0.16 |
+| var2 | -0.11 |
+| var3 |  0.37 |
+| var4 |  0.20 |
 
 Obtraining extra precision is also straightforward:
 
@@ -151,10 +151,10 @@ effectsize.compute(data = df,
 
 |      |    ES   |
 |:----:|:-------:|
-| var1 |  0.2566 |
-| var2 | -0.2934 |
-| var3 |  0.5427 |
-| var4 |  0.1580 |
+| var1 |  0.1632 |
+| var2 | -0.1150 |
+| var3 |  0.3664 |
+| var4 |  0.1961 |
 
 Conifdence intervals are easily computed, in this case 95% CIs:
 
@@ -167,12 +167,12 @@ effectsize.compute(data = df,
                    intervals = 0.95)
 ```
 
-|      |   ES  |    95.0% CI    |
-|:----:|:-----:|:--------------:|
-| var1 |  0.26 |  [-0.02, 0.54] |
-| var2 | -0.29 | [-0.57, -0.01] |
-| var3 |  0.54 |  [0.26, 0.82]  |
-| var4 |  0.16 |  [-0.12, 0.44] |
+|      |   ES  |     95.0% CI    |
+|:----:|:-----:|:---------------:|
+| var1 |  0.16 |  [-0.12, 0.44]  |
+| var2 | -0.11 |  [-0.39, 0.17]  |
+| var3 |  0.37 |   [0.09, 0.65]  |
+| var4 |  0.20 |  [-0.08, 0.48]  |
 
 Similarly, for 99% CIs:
 
@@ -185,12 +185,12 @@ effectsize.compute(data = df,
                    intervals = 0.99)
 ```
 
-|      |   ES  |    99.0% CI   |
-|:----:|:-----:|:-------------:|
-| var1 |  0.26 | [-0.11, 0.63] |
-| var2 | -0.29 | [-0.66, 0.08] |
-| var3 |  0.54 |  [0.17, 0.91] |
-| var4 |  0.16 | [-0.20, 0.52] |
+|      |   ES  |     99.0% CI    |
+|:----:|:-----:|:---------------:|
+| var1 |  0.16 |  [-0.20, 0.52]  |
+| var2 | -0.11 |  [-0.47, 0.25]  |
+| var3 |  0.37 |   [0.00, 0.74]  |
+| var4 |  0.20 |  [-0.17, 0.57]  |
 
 We then create simulated weights for the observations by taking 200 samples from a Normal distribution with mean = 100 and standard deviation = 15. The variable containing the weights is named `wgt`, and we can compute a weighted ES by specifying this in the function call:
 
@@ -205,10 +205,10 @@ effectsize.compute(data = df,
 
 |      |   ES  |
 |:----:|:-----:|
-| var1 |  0.15 |
-| var2 | -0.29 |
-| var3 |  0.53 |
-| var4 |  0.15 |
+| var1 |  0.20 |
+| var2 | -0.14 |
+| var3 |  0.40 |
+| var4 |  0.19 |
 
 ### Empirical examples
 
@@ -239,7 +239,7 @@ Age, BMI, and blood cholesterol were measured as continuous variables, whilst se
 |     BMI     |                      |         30.0 (7.3)        |      29.2 (7.8)     |
 | Cholesterol |                      |        188.0 (40.8)       |     189.6 (43.5)    |
 
-We will assume that the name of the `Pandas DataFrame` in which these data are stored is `nhanes`, and the name of the variable specifying whether indivduals are smokers or non-smokers is named `smoking`.
+We will assume that the `Pandas DataFrame` in which these data are stored is named `nhanes`, and the name of the variable specifying whether indivduals are smokers or non-smokers is named `smoking`.
 
 To compute ESs for all variables:
 
@@ -324,7 +324,7 @@ We see that the magnitude of the ESs has remained unchanged, but the direction f
 
 ## Contributing
 
-Users are actively encouraged to test and implement `effectsize` in their projects, as well as leave feedback and make contributions to the packages. In particular, we welcome contributions relating to improving computational efficiency, adding features which are likely to be widely used, and developing the unerlying mathematical theory. Users can [fork the software][forking] and [create pull requests][pulling] on GitHub, or get in touch regarding any relevant developments in statistical theory.
+Users are actively encouraged to test and implement `effectsize` in their projects, as well as leave feedback and make contributions to the package. In particular, we welcome contributions relating to improving computational efficiency, adding features which are likely to be widely used, and developing the underlying mathematical theory. Users can [fork the software][forking] and [create pull requests][pulling] on GitHub, or get in touch regarding any relevant developments in statistical theory.
 
 ## Contact
 
